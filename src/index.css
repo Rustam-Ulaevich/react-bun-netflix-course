@@ -56,10 +56,6 @@ button {
 button:hover {
   border-color: #ff1f1f;
 }
-button:focus,
-button:focus-visible {
-  outline: 3px solid #ffffff55;
-}
 
 section{
   margin-top: 2rem;
