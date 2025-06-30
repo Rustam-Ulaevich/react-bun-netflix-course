@@ -15,7 +15,7 @@ function App() {
   )
 
   return (
-    <div className="min-h-screen w-full bg-black text-white px-6 py-5">
+    <div className="min-h-screen w-full bg-white dark:bg-black text-black dark:text-white px-6 py-5">
       <header className="mb-10 flex items-center justify-between">
         <img 
           src="/netflix.png"
@@ -31,7 +31,7 @@ function App() {
               setSearchTerm(e.target.value)
             }}
             placeholder='Search...'
-            className='border border-white/15 px-2 py-1 rounded outline-0'
+            className='border border-black/15 dark:border-white/15 px-2 py-1 rounded outline-0'
           />
 
           <button
@@ -40,18 +40,22 @@ function App() {
           >
             {theme === 'dark' ? '🌞 Light' : '🌚 Dark'}
           </button>
-
-        </div>
-        
+        </div>        
       </header>
       <main className="flex gap-6">
-        {MOVIES.filter( movie => movie.name.includes(searchTerm)).map(movie => (
+        {movies.length ? ( 
+          movies.map(movie => (
           <MovieCard 
             key={movie.name}
             image={movie.image}
             rating={movie.rating}
+            trailerYoutubeId={movie.trailerYoutubeId}
           />
-        ) )}
+          ))
+        ) : (
+          <p>Movies not found!</p>
+        )
+        }
         
       </main>      
     </div>
